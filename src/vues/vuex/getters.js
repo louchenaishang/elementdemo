@@ -1,0 +1,1 @@
+export const countInVuex = state => state.count
