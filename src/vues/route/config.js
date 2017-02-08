@@ -2,6 +2,8 @@ import NotFound from '../../views/404View.vue'
 import HomeView from '../../views/HomeView.vue'
 import LoginView from '../../views/LoginView.vue'
 import UsersView from '../../views/nav1/UsersView.vue'
+import FormView from '../../views/nav1/FormView.vue'
+import TableView from '../../views/nav1/TableView.vue'
 import Page1 from '../../views/nav1/Page1.vue'
 import Page2 from '../../views/nav1/Page2.vue'
 import Page3 from '../../views/nav1/Page3.vue'
@@ -39,7 +41,9 @@ let routes = [
     name: '导航一',
     iconCls: 'el-icon-message',
     children: [
-      {path: '/users', component: UsersView, name: '员工'},
+      {path: '/users', component: UsersView, name: 'list'},
+      {path: '/form', component: FormView, name: 'form'},
+      {path: '/table', component: TableView, name: 'table'},
       {path: '/page1', component: Page1, name: '页面1'},
       {path: '/page2', component: Page2, name: '页面2'},
       {path: '/page3', component: Page3, name: '页面3'}
