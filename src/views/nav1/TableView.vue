@@ -82,7 +82,6 @@
 
 <script>
   import util from '../../common/util'
-  import NProgress from 'nprogress'
   import {getUserListPage, removeUser, editUser, addUser} from '../../api/api';
 
   export default {
@@ -132,12 +131,10 @@
           name: this.filters.name
         };
         this.listLoading = true;
-        NProgress.start();
         getUserListPage(para).then((res) => {
           this.total = res.data.total;
           this.users = res.data.users;
           this.listLoading = false;
-          NProgress.done();
         });
       },
       //删除
@@ -148,11 +145,9 @@
           //type: 'warning'
         }).then(() => {
           _this.listLoading = true;
-          NProgress.start();
           let para = {id: row.id};
           removeUser(para).then((res) => {
             _this.listLoading = false;
-            NProgress.done();
             _this.$notify({
               title: '成功',
               message: '删除成功',
@@ -185,7 +180,6 @@
 
             _this.$confirm('确认提交吗？', '提示', {}).then(() => {
               _this.editLoading = true;
-              NProgress.start();
               _this.btnEditText = '提交中';
 
               if (_this.editForm.id == 0) {
@@ -199,7 +193,6 @@
                 };
                 addUser(para).then((res) => {
                   _this.editLoading = false;
-                  NProgress.done();
                   _this.btnEditText = '提 交';
                   _this.$notify({
                     title: '成功',
@@ -221,7 +214,6 @@
                 };
                 editUser(para).then((res) => {
                   _this.editLoading = false;
-                  NProgress.done();
                   _this.btnEditText = '提 交';
                   _this.$notify({
                     title: '成功',
