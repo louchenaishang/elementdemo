@@ -2,14 +2,14 @@
   <el-row class="panel">
     <el-col :span="24" class="panel-top">
       <el-col :span="20" style="font-size:26px;">
-        <img src="../assets/logo4.png" class="logo"> <span>AD<i style="color:#20a0ff">MIN</i>
-</span>
+        <img src="../assets/logo4.png" class="logo">
+        <span>AD<i style="color:#20a0ff">MIN</i></span>
       </el-col>
       <el-col :span="4" class="rightbar">
         <el-dropdown trigger="click">
-					<span class="el-dropdown-link" style="color:#c0ccda;cursor: pointer;"><img :src="this.sysUserAvatar"
-                                                                                     class="head"> {{sysUserName}}
-</span>
+					<span class="el-dropdown-link" style="color:#c0ccda;cursor: pointer;">
+            <img :src="this.sysUserAvatar" class="head"> {{sysUserName}}
+          </span>
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item>我的消息</el-dropdown-item>
             <el-dropdown-item>设置</el-dropdown-item>

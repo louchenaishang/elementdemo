@@ -1,8 +1,8 @@
 import uuid from 'uuid'
 import md5 from 'md5'
 
-const appId = 'community-management-rest'
-const appSecret = 'tuJM@)DirR9%1)ie$dIS-oR3YV1tti8[K.AQ=rp9J[5uBWdFx(3hr.%HPZeknjp#'
+const appId = 'oR3YV1tti8'
+const appSecret = 'tuJM@)DirR9%1)ijp#'
 
 
 export default function (request) {

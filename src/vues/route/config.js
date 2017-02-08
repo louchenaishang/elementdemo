@@ -1,6 +1,6 @@
-import PageA from '../../views/PageA.vue'
-import PageB from '../../views/PageB.vue'
+import NotFound from '../../views/404View.vue'
 import HomeView from '../../views/HomeView.vue'
+import LoginView from '../../views/LoginView.vue'
 import Page1 from '../../views//nav1/Page1.vue'
 import Page2 from '../../views//nav1/Page2.vue'
 import Page3 from '../../views//nav1/Page3.vue'
@@ -8,18 +8,18 @@ import Page4 from '../../views//nav2/Page4.vue'
 import Page5 from '../../views//nav2/Page5.vue'
 
 let routes = [
-  // {
-  //   path: '/login',
-  //   component: Login,
-  //   name: '',
-  //   hidden: true
-  // },
-  // {
-  //   path: '/404',
-  //   component: NotFound,
-  //   name: '',
-  //   hidden: true
-  // },
+  {
+    path: '/login',
+    component: LoginView,
+    name: '',
+    hidden: true
+  },
+  {
+    path: '/404',
+    component: NotFound,
+    name: '',
+    hidden: true
+  },
   // {
   //   path: '/',
   //   component: Home,
@@ -36,7 +36,7 @@ let routes = [
     path: '/',
     component: HomeView,
     name: '导航一',
-    iconCls: 'fa fa-id-card-o',
+    iconCls: 'el-icon-message',
     children: [
       {path: '/page1', component: Page1, name: '页面1'},
       {path: '/page2', component: Page2, name: '页面2'},
@@ -72,11 +72,11 @@ let routes = [
   //     {path: '/echarts', component: echarts, name: 'echarts'}
   //   ]
   // },
-  // {
-  //   path: '*',
-  //   hidden: true,
-  //   redirect: {path: '/404'}
-  // }
+  {
+    path: '*',
+    hidden: true,
+    redirect: {path: '/404'}
+  }
 ]
 
 export default routes

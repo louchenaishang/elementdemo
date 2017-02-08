@@ -4,7 +4,21 @@ import routes from './config'
 
 Vue.use(VueRouter);
 
-export default new VueRouter({
-    mode: 'hash',
-    routes
+const router = new VueRouter({
+  mode: 'hash',
+  routes
 })
+
+router.beforeEach((to, from, next) => {
+  if (to.path == '/login') {
+    sessionStorage.removeItem('user');
+  }
+  let user = JSON.parse(sessionStorage.getItem('user'));
+  if (!user && to.path != '/login') {
+    next({ path: '/login' })
+  } else {
+    next()
+  }
+})
+
+export default router
