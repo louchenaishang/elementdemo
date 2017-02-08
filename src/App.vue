@@ -7,8 +7,7 @@
 </template>
 
 <script>
-  import Demo from './components/demo/Demo.vue'
-  import HomeView from './views/HomeView.vue'
+
 
   export default {
     name: 'app',
@@ -16,7 +15,7 @@
       return {}
     },
     components: {
-      Demo, HomeView
+
     },
     mounted(){
 
@@ -27,6 +26,8 @@
 </script>
 
 <style>
+  @import "../node_modules/font-awesome/css/font-awesome.min.css";
+  @import "../node_modules/flex.css/dist/flex.css";
 
   body {
     /*background-color: #324057;*/

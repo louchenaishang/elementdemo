@@ -11,6 +11,8 @@
   "dependencies": {
     "axios": "^0.15.3",
     "element-ui": "^1.1.6",
+    "flex.css": "^1.1.6",
+    "font-awesome": "^4.7.0",
     "mockjs": "^1.0.1-beta3",
     "vue": "^2.1.10",
     "vue-resource": "^1.2.0",
