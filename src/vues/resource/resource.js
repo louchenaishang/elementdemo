@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueResource from 'vue-resource'
 
-import sign from './sign'
+import sign from '../../common/sign'
 
 Vue.use(VueResource);
 
