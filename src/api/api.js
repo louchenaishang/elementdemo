@@ -6,23 +6,23 @@ import NProgress from 'nprogress'
 axios.interceptors.request.use(function (config) {
   // Do something before request is sent
   NProgress.start()
-  sign(config);
-  return config;
+  sign(config)
+  return config
 }, function (error) {
   // Do something with request error
   NProgress.done()
-  return Promise.reject(error);
+  return Promise.reject(error)
 });
 
 
 axios.interceptors.response.use(function (response) {
   // Do something with response data
   NProgress.done()
-  return response;
+  return response
 }, function (error) {
   NProgress.done()
   // Do something with response error
-  return Promise.reject(error);
+  return Promise.reject(error)
 });
 
 
