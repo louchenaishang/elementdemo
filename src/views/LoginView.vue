@@ -52,17 +52,18 @@
             //_this.$router.replace('/table');
             this.logining = true;
             var loginParams = {username: this.ruleForm2.account, password: this.ruleForm2.checkPass};
-            Api.requestLogin(loginParams).then(data => {
+            Api.requestLogin(loginParams).then(res => {
               this.logining = false;
-              let {msg, code, user} = data;
-              if (code !== 200) {
+              let {body, status} = res.data;
+              if (status !== 'SUCCESS') {
                 this.$notify({
                   title: '错误',
-                  message: msg,
+                  message: body,
                   type: 'error'
                 });
               } else {
-                sessionStorage.setItem('user', JSON.stringify(user));
+                console.log(body)
+                sessionStorage.setItem('user', JSON.stringify(body));
                 this.$router.push({path: '/users'});
               }
             });

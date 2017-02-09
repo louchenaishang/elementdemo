@@ -3,7 +3,7 @@
     <el-col :span="24" class="panel-top">
       <el-col :span="20" style="font-size:26px;">
         <img src="../assets/logo4.png" class="logo">
-        <span>AD<i style="color:#20a0ff">MIN</i></span>
+        <span>AD<i style="color:#20a0ff">MIN</i> {{ version }}</span>
       </el-col>
       <el-col :span="4" class="rightbar">
         <el-dropdown trigger="click">
@@ -62,6 +62,7 @@
 
 <script>
   import {mapGetters, mapActions} from 'vuex'
+  import Api from '../api/api'
 
   export default {
     name: 'home-view',
@@ -69,6 +70,7 @@
     computed: {},
     data () {
       return {
+        version: '',
         sysUserName: '',
         sysUserAvatar: '',
         form: {
@@ -107,6 +109,13 @@
         }).catch(() => {
           console.log('catch logout')
         })
+      },
+      getVersion(){
+        Api.getApiVersion().then((res) => {
+          if (res.data.status == 'SUCCESS') {
+            this.version = res.data.body
+          }
+        })
       }
     },
     mounted() {
@@ -116,6 +125,7 @@
         this.sysUserName = user.name || ''
         this.sysUserAvatar = user.avatar || ''
       }
+      this.getVersion()
     }
   }
 </script>

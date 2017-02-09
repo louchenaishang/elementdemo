@@ -22,7 +22,7 @@ import Mock from './mock'
 
 //=========我是分割线=========
 //初始化mock
-Mock.bootstrap()
+//Mock.bootstrap()
 
 //初始化进度条属性
 NProgress.configure({ showSpinner: false });

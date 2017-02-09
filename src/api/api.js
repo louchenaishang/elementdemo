@@ -3,7 +3,7 @@ import sign from '../common/sign'
 import NProgress from 'nprogress'
 
 
-//拦截器
+//拦截器,请求
 axios.interceptors.request.use(function (config) {
   // Do something before request is sent
   NProgress.start()
@@ -15,7 +15,7 @@ axios.interceptors.request.use(function (config) {
   return Promise.reject(error)
 })
 
-
+//拦截器,响应
 axios.interceptors.response.use(function (response) {
   // Do something with response data
   NProgress.done()
@@ -32,9 +32,14 @@ axios.interceptors.response.use(function (response) {
 //api方法
 let base = ''
 
+// const requestLogin = params => {
+//   return axios.post(`${base}/login`, params).then(res => res.data)
+// }
+
 const requestLogin = params => {
-  return axios.post(`${base}/login`, params).then(res => res.data)
+  return axios.post('http://localhost:8082/login', params)
 }
+
 
 const getUserList = params => {
   return axios.get(`${base}/user/list`, {params: params})
@@ -56,7 +61,9 @@ const addUser = params => {
   return axios.get(`${base}/user/add`, {params: params})
 }
 
-
+const getApiVersion = params => {
+  return axios.get('http://localhost:8082/version', params)
+}
 
 
 //对外暴露的api方法
@@ -67,6 +74,7 @@ const Api = {
   removeUser,
   editUser,
   addUser,
+  getApiVersion,
 }
 
 
