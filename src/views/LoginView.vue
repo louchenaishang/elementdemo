@@ -18,7 +18,7 @@
 </template>
 
 <script>
-  import {requestLogin} from '../api/api';
+  import Api from '../api/api'
 
   export default {
     data() {
@@ -52,7 +52,7 @@
             //_this.$router.replace('/table');
             this.logining = true;
             var loginParams = {username: this.ruleForm2.account, password: this.ruleForm2.checkPass};
-            requestLogin(loginParams).then(data => {
+            Api.requestLogin(loginParams).then(data => {
               this.logining = false;
               let {msg, code, user} = data;
               if (code !== 200) {

@@ -82,7 +82,7 @@
 
 <script>
   import util from '../../common/util'
-  import {getUserListPage, removeUser, editUser, addUser} from '../../api/api';
+  import Api from '../../api/api'
 
   export default {
     data() {
@@ -131,7 +131,7 @@
           name: this.filters.name
         };
         this.listLoading = true;
-        getUserListPage(para).then((res) => {
+        Api.getUserListPage(para).then((res) => {
           this.total = res.data.total;
           this.users = res.data.users;
           this.listLoading = false;
@@ -146,7 +146,7 @@
         }).then(() => {
           _this.listLoading = true;
           let para = {id: row.id};
-          removeUser(para).then((res) => {
+          Api.removeUser(para).then((res) => {
             _this.listLoading = false;
             _this.$notify({
               title: '成功',
@@ -191,7 +191,7 @@
                   birth: _this.editForm.birth == '' ? '' : util.formatDate.format(new Date(_this.editForm.birth), 'yyyy-MM-dd'),
                   addr: _this.editForm.addr,
                 };
-                addUser(para).then((res) => {
+                Api.addUser(para).then((res) => {
                   _this.editLoading = false;
                   _this.btnEditText = '提 交';
                   _this.$notify({
@@ -212,7 +212,7 @@
                   birth: _this.editForm.birth == '' ? '' : util.formatDate.format(new Date(_this.editForm.birth), 'yyyy-MM-dd'),
                   addr: _this.editForm.addr,
                 };
-                editUser(para).then((res) => {
+                Api.editUser(para).then((res) => {
                   _this.editLoading = false;
                   _this.btnEditText = '提 交';
                   _this.$notify({

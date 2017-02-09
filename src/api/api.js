@@ -3,6 +3,7 @@ import sign from '../common/sign'
 import NProgress from 'nprogress'
 
 
+//拦截器
 axios.interceptors.request.use(function (config) {
   // Do something before request is sent
   NProgress.start()
@@ -12,7 +13,7 @@ axios.interceptors.request.use(function (config) {
   // Do something with request error
   NProgress.done()
   return Promise.reject(error)
-});
+})
 
 
 axios.interceptors.response.use(function (response) {
@@ -23,33 +24,51 @@ axios.interceptors.response.use(function (response) {
   NProgress.done()
   // Do something with response error
   return Promise.reject(error)
-});
+})
 
 
 
 
-let base = '';
+//api方法
+let base = ''
 
-export const requestLogin = params => {
-  return axios.post(`${base}/login`, params).then(res => res.data);
-};
+const requestLogin = params => {
+  return axios.post(`${base}/login`, params).then(res => res.data)
+}
 
-export const getUserList = params => {
-  return axios.get(`${base}/user/list`, {params: params});
-};
+const getUserList = params => {
+  return axios.get(`${base}/user/list`, {params: params})
+}
 
-export const getUserListPage = params => {
-  return axios.get(`${base}/user/listpage`, {params: params});
-};
+const getUserListPage = params => {
+  return axios.get(`${base}/user/listpage`, {params: params})
+}
 
-export const removeUser = params => {
-  return axios.get(`${base}/user/remove`, {params: params});
-};
+const removeUser = params => {
+  return axios.get(`${base}/user/remove`, {params: params})
+}
 
-export const editUser = params => {
-  return axios.get(`${base}/user/edit`, {params: params});
-};
+const editUser = params => {
+  return axios.get(`${base}/user/edit`, {params: params})
+}
 
-export const addUser = params => {
-  return axios.get(`${base}/user/add`, {params: params});
-};
+const addUser = params => {
+  return axios.get(`${base}/user/add`, {params: params})
+}
+
+
+
+
+//对外暴露的api方法
+const Api = {
+  requestLogin,
+  getUserList,
+  getUserListPage,
+  removeUser,
+  editUser,
+  addUser,
+}
+
+
+
+export default Api
