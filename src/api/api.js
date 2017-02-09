@@ -53,7 +53,7 @@ const getUserListPage = params => {
 }
 
 const removeUser = params => {
-  return axios.post(`${base}/user/remove`, {params: params})
+  return axios.delete('http://localhost:8082/users/one', {params: params})
 }
 
 const editUser = params => {

@@ -33,7 +33,7 @@
         <el-table-column inline-template :context="_self" label="操作" width="150">
 	<span>
 					<el-button size="small" @click="handleEdit(row)">编辑</el-button>
-					<el-button type="danger" size="small" @click="handleDel(row)">删除</el-button>
+					<el-button type="danger" size="small" @click="handleDel(row)" v-show="showDel(row)">删除</el-button>
 				</span>
         </el-table-column>
       </el-table>
@@ -117,6 +117,25 @@
       }
     },
     methods: {
+      //是否隐藏删除按钮
+      showDel (row){
+        if (row.name === '管理员') {
+          return false
+        } else {
+          var user = sessionStorage.getItem('user')
+          if (user) {
+            user = JSON.parse(user)
+            let name = user.name || ''
+            if (row.name === name) {
+              return false
+            } else {
+              return true
+            }
+          } else {
+            return true
+          }
+        }
+      },
       //性别显示转换
       formatSex: function (row, column) {
         return row.sex == 'MALE' ? '男' : row.sex == 'FEMALE' ? '女' : '未知'
@@ -159,7 +178,6 @@
       },
       //删除
       handleDel: function (row) {
-        //console.log(row)
         var _this = this
         this.$confirm('确认删除该记录吗?', '提示', {
           //type: 'warning'
@@ -167,15 +185,23 @@
           _this.listLoading = true
           let para = {id: row.id}
           Api.removeUser(para).then((res) => {
+            let {body, status} = res.data
+            if (status !== 'SUCCESS') {
+              this.$notify({
+                title: '错误',
+                message: body,
+                type: 'error'
+              })
+            } else {
+              _this.$notify({
+                title: '成功',
+                message: '删除成功',
+                type: 'success'
+              })
+              _this.getUsers()
+            }
             _this.listLoading = false
-            _this.$notify({
-              title: '成功',
-              message: '删除成功',
-              type: 'success'
-            })
-            _this.getUsers()
           })
-
         }).catch(() => {
 
         })
