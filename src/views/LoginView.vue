@@ -62,7 +62,6 @@
                   type: 'error'
                 });
               } else {
-                console.log(body)
                 sessionStorage.setItem('user', JSON.stringify(body));
                 this.$router.push({path: '/users'});
               }

@@ -1,8 +1,6 @@
 //vue全家桶
 import Vue from 'vue'
 import {sync} from 'vuex-router-sync'
-import {currency} from './vues/fliter/currency'
-//import resource from './vues/resource/resource'
 import * as api from './api/api'
 import store from './vues/vuex/store'
 import router from './vues/route/route'
@@ -31,7 +29,10 @@ NProgress.configure({ showSpinner: false });
 Vue.use(ElementUI)
 
 //vue,使用过滤器
-Vue.filter('currency', currency)
+Vue.filter('date', function (value, formatString) {
+  formatString = formatString || 'YYYY-MM-DD';
+  return moment(value).format(formatString);
+});
 
 //vue,将route信息注册到vuex
 //It adds a route module into the store, which contains the state representing the current route:
