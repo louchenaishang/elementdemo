@@ -3,7 +3,7 @@
     <el-col :span="24" class="panel-top">
       <el-col :span="20" style="font-size:26px;">
         <img src="../assets/logo4.png" class="logo">
-        <span>AD<i style="color:#20a0ff">MIN</i> {{ version }}</span>
+        <span>AD<i style="color:#20a0ff">MIN</i><i style="font-size: 13px"> {{ version }}</i></span>
       </el-col>
       <el-col :span="4" class="rightbar">
         <el-dropdown trigger="click">

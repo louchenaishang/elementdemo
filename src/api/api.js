@@ -2,6 +2,11 @@ import axios from 'axios';
 import sign from '../common/sign'
 import NProgress from 'nprogress'
 
+// `withCredentials` indicates whether or not cross-site Access-Control requests
+// should be made using credentials
+// default false
+// 跨域请求设置服务端返回的cookie
+axios.defaults.withCredentials = true
 
 //拦截器,请求
 axios.interceptors.request.use(function (config) {
@@ -27,8 +32,6 @@ axios.interceptors.response.use(function (response) {
 })
 
 
-
-
 //api方法
 let base = ''
 
@@ -42,23 +45,23 @@ const requestLogin = params => {
 
 
 const getUserList = params => {
-  return axios.get(`${base}/user/list`, {params: params})
+  return axios.get('http://localhost:8082/users', {params: params})
 }
 
 const getUserListPage = params => {
-  return axios.get(`${base}/user/listpage`, {params: params})
+  return axios.get('http://localhost:8082/users', {params: params})
 }
 
 const removeUser = params => {
-  return axios.get(`${base}/user/remove`, {params: params})
+  return axios.post(`${base}/user/remove`, {params: params})
 }
 
 const editUser = params => {
-  return axios.get(`${base}/user/edit`, {params: params})
+  return axios.post(`${base}/user/edit`, {params: params})
 }
 
 const addUser = params => {
-  return axios.get(`${base}/user/add`, {params: params})
+  return axios.post(`${base}/user/add`, {params: params})
 }
 
 const getApiVersion = params => {
@@ -76,7 +79,6 @@ const Api = {
   addUser,
   getApiVersion,
 }
-
 
 
 export default Api
