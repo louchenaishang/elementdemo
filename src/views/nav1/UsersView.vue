@@ -55,7 +55,7 @@
         if (row.birth == null || row.birth == undefined) {
           return ''
         } else {
-          return row.birth.substring(0,10)
+          return row.birth.substring(0, 10)
         }
       },
       //获取用户列表
@@ -65,7 +65,16 @@
         }
         this.loading = true
         Api.getUserList(para).then((res) => {
-          this.users = res.data.body
+          let {body, status} = res.data
+          if (status !== 'SUCCESS') {
+            this.$notify({
+              title: '错误',
+              message: body,
+              type: 'error'
+            })
+          } else {
+            this.users = body
+          }
           this.loading = false
         })
       }
