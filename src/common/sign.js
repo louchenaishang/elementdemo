@@ -14,8 +14,8 @@ export default function (request) {
     request.params = {}
   }
 
-  request.params.appId = appId
-  request.params.appNonceStr = appNonceStr
-  request.params.appSign = appSign
+  request.params.ai = appId
+  request.params.ans = appNonceStr
+  request.params.as = appSign
 
 }
