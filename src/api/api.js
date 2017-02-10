@@ -33,8 +33,12 @@ axios.interceptors.response.use(function (response) {
 
 
 //api方法
-//let base = 'http://localhost:8082'
-let base = 'http://api.louchen.pub'
+let base = ''
+if(process.env.NODE_ENV ==='development'){
+  base = 'http://localhost:8082'
+}else{
+  let base = 'http://api.louchen.pub'
+}
 
 
 const requestLogin = params => {
