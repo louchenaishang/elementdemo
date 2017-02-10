@@ -34,7 +34,7 @@ axios.interceptors.response.use(function (response) {
 
 //api方法
 //let base = 'http://localhost:8082'
-let base = 'http://45.32.90.134:8082'
+let base = 'http://api.louchen.pub'
 
 
 const requestLogin = params => {
