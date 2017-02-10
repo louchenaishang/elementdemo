@@ -66,7 +66,7 @@ const getUser = params => {
 }
 
 const getApiVersion = params => {
-  return axios.get(`${base}/users/version`, params)
+  return axios.get(`${base}/version`, params)
 }
 
 
