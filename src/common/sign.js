@@ -7,11 +7,15 @@ const appSecret = 'tuJM@)DirR9%1)ijp#'
 
 export default function (request) {
 
-  var appNonceStr = uuid.v1().replace(new RegExp('-', "gm"), '');
-  var appSign = md5(appId + appSecret + appNonceStr);
+  var appNonceStr = uuid.v1().replace(new RegExp('-', "gm"), '')
+  var appSign = md5(appId + appSecret + appNonceStr)
 
-  request.params.appId = appId;
-  request.params.appNonceStr = appNonceStr;
-  request.params.appSign = appSign;
+  if(request.params === undefined || request.params === null || request.params ===''){
+    request.params = {}
+  }
+
+  request.params.ai = appId
+  request.params.ans = appNonceStr
+  request.params.as = appSign
 
 }

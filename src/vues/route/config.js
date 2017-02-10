@@ -4,7 +4,7 @@ import LoginView from '../../views/LoginView.vue'
 import UsersView from '../../views/nav1/UsersView.vue'
 import FormView from '../../views/nav1/FormView.vue'
 import TableView from '../../views/nav1/TableView.vue'
-import EchartsView from '../../views/charts/EchartsView.vue'
+//import EchartsView from '../../views/charts/EchartsView.vue'  //这玩意巨大 5m
 import Page1 from '../../views/nav1/Page1.vue'
 import Page2 from '../../views/nav1/Page2.vue'
 import Page3 from '../../views/nav1/Page3.vue'
@@ -57,15 +57,15 @@ let routes = [
       {path: '/page5', component: Page5, name: '导航三'}
     ]
   },
-  {
-    path: '/',
-    component: HomeView,
-    name: '图表',
-    iconCls: 'fa fa-bar-chart',
-    children: [
-      {path: '/echarts', component: EchartsView, name: 'Charts'}
-    ]
-  },
+  // {
+  //   path: '/',
+  //   component: HomeView,
+  //   name: '图表',
+  //   iconCls: 'fa fa-bar-chart',
+  //   children: [
+  //     {path: '/echarts', component: EchartsView, name: 'Charts'}
+  //   ]
+  // },
   {
     path: '*',
     hidden: true,

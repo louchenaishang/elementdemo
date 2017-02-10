@@ -23,7 +23,7 @@
         </el-table-column>
         <el-table-column prop="age" label="年龄" width="100" sortable>
         </el-table-column>
-        <el-table-column prop="birth" label="生日" width="120" sortable>
+        <el-table-column prop="birth" label="生日" width="120" :formatter="formatDate" sortable>
         </el-table-column>
         <el-table-column prop="addr" label="地址" min-width="180" sortable>
         </el-table-column>
@@ -33,7 +33,7 @@
   </section>
 </template>
 <script>
-  import {getUserList} from '../../api/api';
+  import Api from '../../api/api'
 
   export default {
     data() {
@@ -48,24 +48,41 @@
     methods: {
       //性别显示转换
       formatSex: function (row, column) {
-        return row.sex == 1 ? '男' : row.sex == 0 ? '女' : '未知';
+        return row.sex == 'MALE' ? '男' : row.sex == 'FEMALE' ? '女' : '未知'
+      },
+      //日期格式化
+      formatDate: function (row, column) {
+        if (row.birth == null || row.birth == undefined) {
+          return ''
+        } else {
+          return row.birth.substring(0, 10)
+        }
       },
       //获取用户列表
       getUser: function () {
         let para = {
           name: this.filters.name
-        };
-        this.loading = true;
-        getUserList(para).then((res) => {
-          this.users = res.data.users;
-          this.loading = false;
-        });
+        }
+        this.loading = true
+        Api.getUserList(para).then((res) => {
+          let {body, status} = res.data
+          if (status !== 'SUCCESS') {
+            this.$notify({
+              title: '错误',
+              message: body,
+              type: 'error'
+            })
+          } else {
+            this.users = body
+          }
+          this.loading = false
+        })
       }
     },
     mounted() {
-      this.getUser();
+      this.getUser()
     }
-  };
+  }
 </script>
 
 <style scoped>
