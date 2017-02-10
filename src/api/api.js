@@ -33,42 +33,40 @@ axios.interceptors.response.use(function (response) {
 
 
 //api方法
-let base = ''
+//let base = 'http://localhost:8082'
+let base = 'http://45.32.90.134:8082'
 
-// const requestLogin = params => {
-//   return axios.post(`${base}/login`, params).then(res => res.data)
-// }
 
 const requestLogin = params => {
-  return axios.post('http://localhost:8082/login', params)
+  return axios.post(`${base}/login`, params)
 }
 
 const getUserList = params => {
-  return axios.get('http://localhost:8082/users', {params: params})
+  return axios.get(`${base}/users`, {params: params})
 }
 
 const getUserListPage = params => {
-  return axios.get('http://localhost:8082/users', {params: params})
+  return axios.get(`${base}/users`, {params: params})
 }
 
 const removeUser = params => {
-  return axios.delete('http://localhost:8082/users/one', {params: params})
+  return axios.delete(`${base}/users/one`, {params: params})
 }
 
 const editUser = params => {
-  return axios.put('http://localhost:8082/users/one', params)
+  return axios.put(`${base}/users/one`, params)
 }
 
 const addUser = params => {
-  return axios.post('http://localhost:8082/users/one', params)
+  return axios.post(`${base}/users/one`, params)
 }
 
 const getUser = params => {
-  return axios.get('http://localhost:8082/users/one', {params: params})
+  return axios.get(`${base}/users/one`, {params: params})
 }
 
 const getApiVersion = params => {
-  return axios.get('http://localhost:8082/version', params)
+  return axios.get(`${base}/users/version`, params)
 }
 
 

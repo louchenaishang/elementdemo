@@ -14,13 +14,6 @@ import 'element-ui/lib/theme-default/index.css'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 
-//模拟请求数据
-import Mock from './mock'
-
-
-//=========我是分割线=========
-//初始化mock
-//Mock.bootstrap()
 
 //初始化进度条属性
 NProgress.configure({ showSpinner: false });
