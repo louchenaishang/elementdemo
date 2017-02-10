@@ -32,7 +32,7 @@
         </el-table-column>
         <el-table-column inline-template :context="_self" label="操作" width="150">
 	<span>
-					<el-button size="small" @click="handleEdit(row)">编辑</el-button>
+					<el-button size="small" @click="handleEdit(row)" v-show="showEdit(row)">编辑</el-button>
 					<el-button type="danger" size="small" @click="handleDel(row)" v-show="showDel(row)">删除</el-button>
 				</span>
         </el-table-column>
@@ -119,6 +119,14 @@
       }
     },
     methods: {
+      //是否隐藏编辑按钮
+      showEdit (row){
+        if (row.name === '管理员') {
+          return false
+        }else{
+          return true
+        }
+      },
       //是否隐藏删除按钮
       showDel (row){
         if (row.name === '管理员') {
@@ -236,7 +244,7 @@
                   name: _this.editForm.name,
                   sex: _this.editForm.sex,
                   age: _this.editForm.age,
-                  birth: _this.editForm.birth == '' ? '' : util.formatDate.format(new Date(_this.editForm.birth.trim()), 'yyyy-MM-dd hh:mm:ss'),
+                  birth: _this.editForm.birth == '' ? '' : util.formatDate.format(new Date(_this.editForm.birth), 'yyyy-MM-dd hh:mm:ss'),
                   addr: _this.editForm.addr,
                 }
                 Api.addUser(para).then((res) => {
@@ -257,7 +265,7 @@
                   name: _this.editForm.name,
                   sex: _this.editForm.sex,
                   age: _this.editForm.age,
-                  birth: _this.editForm.birth == '' ? '' : util.formatDate.format(new Date(_this.editForm.birth.trim()), 'yyyy-MM-dd hh:mm:ss'),
+                  birth: _this.editForm.birth == '' ? '' : util.formatDate.format(new Date(_this.editForm.birth), 'yyyy-MM-dd hh:mm:ss'),
                   addr: _this.editForm.addr,
                 }
                 Api.editUser(para).then((res) => {

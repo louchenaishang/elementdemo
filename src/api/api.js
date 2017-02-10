@@ -60,7 +60,7 @@ const editUser = params => {
 }
 
 const addUser = params => {
-  return axios.post('http://localhost:8082/users/one', {params: params})
+  return axios.post('http://localhost:8082/users/one', params)
 }
 
 const getUser = params => {
