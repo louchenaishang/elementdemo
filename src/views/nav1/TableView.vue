@@ -58,8 +58,8 @@
                             <el-option label="女" :value="0"></el-option>
                         </el-select>-->
           <el-radio-group v-model="editForm.sex">
-            <el-radio class="radio" :label="1">男</el-radio>
-            <el-radio class="radio" :label="0">女</el-radio>
+            <el-radio class="radio" :label="MALE">男</el-radio>
+            <el-radio class="radio" :label="FEMALE">女</el-radio>
           </el-radio-group>
         </el-form-item>
         <el-form-item label="年龄">
@@ -95,6 +95,8 @@
         page: 1,
         size: 20,
         listLoading: false,
+        MALE: 'MALE',
+        FEMALE: 'FEMALE',
         editFormVisible: false,//编辑界面显是否显示
         editFormTtile: '编辑',//编辑界面标题
         //编辑界面数据
@@ -234,7 +236,7 @@
                   name: _this.editForm.name,
                   sex: _this.editForm.sex,
                   age: _this.editForm.age,
-                  birth: _this.editForm.birth == '' ? '' : util.formatDate.format(new Date(_this.editForm.birth), 'yyyy-MM-dd'),
+                  birth: _this.editForm.birth == '' ? '' : util.formatDate.format(new Date(_this.editForm.birth.trim()), 'yyyy-MM-dd hh:mm:ss'),
                   addr: _this.editForm.addr,
                 }
                 Api.addUser(para).then((res) => {
@@ -255,7 +257,7 @@
                   name: _this.editForm.name,
                   sex: _this.editForm.sex,
                   age: _this.editForm.age,
-                  birth: _this.editForm.birth == '' ? '' : util.formatDate.format(new Date(_this.editForm.birth), 'yyyy-MM-dd'),
+                  birth: _this.editForm.birth == '' ? '' : util.formatDate.format(new Date(_this.editForm.birth.trim()), 'yyyy-MM-dd hh:mm:ss'),
                   addr: _this.editForm.addr,
                 }
                 Api.editUser(para).then((res) => {

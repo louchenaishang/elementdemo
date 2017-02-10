@@ -43,7 +43,6 @@ const requestLogin = params => {
   return axios.post('http://localhost:8082/login', params)
 }
 
-
 const getUserList = params => {
   return axios.get('http://localhost:8082/users', {params: params})
 }
@@ -57,11 +56,15 @@ const removeUser = params => {
 }
 
 const editUser = params => {
-  return axios.post(`${base}/user/edit`, {params: params})
+  return axios.put('http://localhost:8082/users/one', params)
 }
 
 const addUser = params => {
-  return axios.post(`${base}/user/add`, {params: params})
+  return axios.post('http://localhost:8082/users/one', {params: params})
+}
+
+const getUser = params => {
+  return axios.get('http://localhost:8082/users/one', {params: params})
 }
 
 const getApiVersion = params => {
