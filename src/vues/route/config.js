@@ -27,45 +27,12 @@ let routes = [
   {
     path: '/',
     component: HomeView,
-    name: '导航一',
-    iconCls: 'el-icon-message',
+    name: '员工通讯录',
+    iconCls: 'fa fa-address-card-o',
     children: [
-      {path: '/users', component: UsersView, name: 'list'},
-      {path: '/form', component: FormView, name: 'form'},
-      {path: '/table', component: TableView, name: 'table'},
-      {path: '/page1', component: Page1, name: '页面1'},
-      {path: '/page2', component: Page2, name: '页面2'}
+      {path: '/table', component: TableView, name: '员工列表', iconCls: 'fa fa-user-o'}
     ]
   },
-  {
-    path: '/',
-    component: HomeView,
-    name: '导航二',
-    iconCls: 'fa fa-id-card-o',
-    children: [
-      {path: '/page3', component: Page3, name: '页面3'},
-      {path: '/page4', component: Page4, name: '页面4'}
-    ]
-  },
-  {
-    path: '/',
-    component: HomeView,
-    name: '',
-    iconCls: 'fa fa-address-card',
-    leaf: true,//只有一个节点
-    children: [
-      {path: '/page5', component: Page5, name: '导航三'}
-    ]
-  },
-  // {
-  //   path: '/',
-  //   component: HomeView,
-  //   name: '图表',
-  //   iconCls: 'fa fa-bar-chart',
-  //   children: [
-  //     {path: '/echarts', component: EchartsView, name: 'Charts'}
-  //   ]
-  // },
   {
     path: '*',
     hidden: true,

@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios from 'axios'
+import addr from './addr'
 import sign from '../common/sign'
 import NProgress from 'nprogress'
 
@@ -32,14 +33,7 @@ axios.interceptors.response.use(function (response) {
 })
 
 
-//api方法
-let base = ''
-if(process.env.NODE_ENV ==='development'){
-  base = 'http://localhost:8082'
-}else{
-  base = 'http://api.louchen.pub'
-}
-
+let base = addr
 
 const requestLogin = params => {
   return axios.post(`${base}/login`, params)
