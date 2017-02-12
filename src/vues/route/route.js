@@ -5,19 +5,25 @@ import routes from './config'
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-  mode: 'hash',
+  mode: 'history',
   routes
 })
 
 router.beforeEach((to, from, next) => {
   if (to.path == '/login') {
-    sessionStorage.removeItem('user');
-  }
-  let user = JSON.parse(sessionStorage.getItem('user'));
-  if (!user && to.path != '/login') {
-    next({ path: '/login' })
-  } else {
-    next()
+    let user = JSON.parse(sessionStorage.getItem('user'));
+    if(user){
+      next({ path: '/' })
+    }else{
+      next()
+    }
+  }else{
+    let user = JSON.parse(sessionStorage.getItem('user'));
+    if (!user) {
+      next({ path: '/login' })
+    } else {
+      next()
+    }
   }
 })
 
