@@ -18,9 +18,9 @@
     <!--列表-->
     <template>
       <el-table :data="depts" highlight-current-row v-loading="listLoading" style="width: 100%;">
-        <el-table-column type="index" width="60">
+        <el-table-column type="index" min-width="60">
         </el-table-column>
-        <el-table-column prop="name" label="部门名称" width="120" sortable>
+        <el-table-column prop="name" label="部门名称" min-width="300" sortable>
         </el-table-column>
         <el-table-column inline-template :context="_self" label="操作" width="150">
 	      <span>
