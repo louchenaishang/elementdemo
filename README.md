@@ -26,3 +26,5 @@ npm run build --report
 参考 [element](http://element.eleme.io/#/zh-CN/component/installation/) 
 
 参考 [vueAdmin](https://github.com/taylorchen709/vueAdmin) 
+
+参考 [restJava](https://github.com/louchenaishang/fastrestjava)
