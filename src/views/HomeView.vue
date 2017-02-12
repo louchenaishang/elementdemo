@@ -11,8 +11,8 @@
             <img :src="this.sysUserAvatar" class="head"> {{sysUserName}}
           </span>
           <el-dropdown-menu slot="dropdown">
-            <el-dropdown-item>我的消息</el-dropdown-item>
-            <el-dropdown-item>设置</el-dropdown-item>
+            <!--<el-dropdown-item>我的消息</el-dropdown-item>-->
+            <!--<el-dropdown-item>设置</el-dropdown-item>-->
             <el-dropdown-item divided @click.native="logout">退出登录</el-dropdown-item>
           </el-dropdown-menu>
         </el-dropdown>
@@ -27,7 +27,7 @@
           <template v-for="(item,index) in $router.options.routes" v-if="!item.hidden">
             <el-submenu :index="index+''" v-if="!item.leaf">
               <template slot="title"><i :class="item.iconCls"></i>{{item.name}}</template>
-              <el-menu-item v-for="child in item.children" :index="child.path" v-if="!child.hidden">{{child.name}}
+              <el-menu-item v-for="child in item.children" :index="child.path" v-if="!child.hidden"><i :class="child.iconCls"></i>{{child.name}}
               </el-menu-item>
             </el-submenu>
             <el-menu-item v-if="item.leaf&&item.children.length>0" :index="item.children[0].path"><i

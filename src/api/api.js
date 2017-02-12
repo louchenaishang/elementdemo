@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios from 'axios'
+import addr from './addr'
 import sign from '../common/sign'
 import NProgress from 'nprogress'
 
@@ -32,10 +33,7 @@ axios.interceptors.response.use(function (response) {
 })
 
 
-//api方法
-//let base = 'http://localhost:8082'
-let base = 'http://api.louchen.pub'
-
+let base = addr
 
 const requestLogin = params => {
   return axios.post(`${base}/login`, params)
@@ -65,6 +63,30 @@ const getUser = params => {
   return axios.get(`${base}/users/one`, {params: params})
 }
 
+const getDeptList = params => {
+  return axios.get(`${base}/depts`, {params: params})
+}
+
+const getDeptListPage = params => {
+  return axios.get(`${base}/depts`, {params: params})
+}
+
+const removeDept = params => {
+  return axios.delete(`${base}/depts/one`, {params: params})
+}
+
+const editDept = params => {
+  return axios.put(`${base}/depts/one`, params)
+}
+
+const addDept = params => {
+  return axios.post(`${base}/depts/one`, params)
+}
+
+const getDept = params => {
+  return axios.get(`${base}/depts/one`, {params: params})
+}
+
 const getApiVersion = params => {
   return axios.get(`${base}/version`, params)
 }
@@ -78,8 +100,14 @@ const Api = {
   removeUser,
   editUser,
   addUser,
+  getUser,
+  getDeptList,
+  getDeptListPage,
+  removeDept,
+  editDept,
+  addDept,
+  getDept,
   getApiVersion,
 }
-
 
 export default Api
