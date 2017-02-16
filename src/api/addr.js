@@ -1,6 +1,6 @@
 let base = ''
 if(process.env.NODE_ENV ==='development'){
-  base = 'http://localhost.com:8082'
+  base = 'https://localhost.com:8443'
 }else{
   base = 'http://api.louchen.pub'
 }
