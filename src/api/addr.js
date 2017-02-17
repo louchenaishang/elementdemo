@@ -1,8 +1,8 @@
 let base = ''
 if(process.env.NODE_ENV ==='development'){
-  base = 'https://localhost.com:8443'
+  base = 'http://localhost.com:8082'
 }else{
-  base = 'http://api.louchen.pub'
+  base = 'https://api.louchen.pub'
 }
 
 export default base
